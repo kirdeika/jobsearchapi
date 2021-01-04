@@ -1,0 +1,87 @@
+/*.job {
+    flex: 1 0 30%;
+    padding: 1%;
+    margin: 5px;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0, 0.05);
+}*/
+
+body {
+    background-color: #212121;
+    color: #f7f7f7;
+    padding: 2% 5%;
+}
+
+.most-relevant-wrapper, .relevant-wrapper, .contains-php-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 450px));
+    justify-content: center;
+
+}
+
+.most-relevant > h1, .relevant > h1, .contains-php > h1 {
+    border-bottom: 3px solid rgba(0,0,0,0.3);
+}
+
+.job-new {
+    background-color: rgba(0,255,0,0.2);
+}
+
+.job-row {
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    text-align: right;
+}
+
+.job-row:not(:last-child) {
+    box-shadow: 0px 15px 10px -15px rgba(0,0,0,0.3);
+}
+
+.job {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 50px;
+    grid-template-rows: minmax(50px, 150px);
+    overflow: scroll;
+    padding: 1%;
+    margin: 5px;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0, 0.3);
+    background-color: #333333;
+    padding: 0px 25px;
+    border-radius: 10px;
+}
+
+.job {
+    overflow-y: scroll;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+}
+
+.job a {
+    width: 85%;
+}
+
+.new-job-title, .most-relevant > h1, .most-relevant i {
+    color: #ba2500;
+}
+
+.relevant-job-title, .relevant > h1, .relevant i {
+    color: #00b7ba;
+}
+
+.contains-job-title, .contains-php > h1, .contains-php i {
+    color: #8f8f8f;
+}
+
+.job::-webkit-scrollbar { /* WebKit */
+    width: 2px;
+}
+
+.job::-webkit-scrollbar-thumb {
+    background-color: black;
+}
+
+::-webkit-scrollbar-corner {
+    display: none;
+}

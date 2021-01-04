@@ -1,0 +1,108 @@
+<head>
+    <link rel="stylesheet" href="style.css?v=4">
+    <link href="/assets/fontawesome/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<div class="most-relevant">
+<h1>Most relevant</h1>
+    <div class="most-relevant-wrapper">
+        {% for job in jobs %}
+            {% if ('Junior' in job.title) or ('Jaunesnysis' in job.title) %}
+                {% if ('PHP' in job.title) %}
+                    <article class="job {% if date(job.getFetchDate) == date() %}job-new{% endif %}">
+                        <div class="job-row">
+                            <i class="far fa-star"></i>
+                            <a href="{{ job.link }}" class="new-job-title" target="_blank"><h2>{{ job.title }}</h2></a>
+                        </div>
+                        <div class="job-row">
+                            <i class="far fa-bookmark"></i><h3> {{ job.workplacename|default("No Company name") }}</h3>
+                        </div>
+                        <div class="job-row">
+                            <i class="fas fa-euro-sign"></i><p> {{ job.salary|default("No Salary Provided") }}</p>
+                        </div>
+                        <div class="job-row">
+                            <i class="far fa-building"></i><p> {{ job.city|default("No City Provided") }}</p>
+                        </div>
+                        <div class="job-row">
+                            <i class="fas fa-eye"></i><p> {{ job.getFetchDate|date('Y-m-d') }}</p>
+                        </div>
+                        <div class="job-row">
+                            <i class="far fa-check-square"></i><p> {{ job.getLastUpdate|date('Y-m-d') }}</p>
+                        </div>
+                        <div class="job-row">
+                            <p>{{ job.requirements|raw|nl2br }}</p>
+                        </div>
+                    </article>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="relevant">
+<h1>Relevant</h1>
+    <div class="relevant-wrapper">
+        {% for job in jobs %}
+            {% if ('Junior' not in job.title) and ('Jaunesnysis' not in job.title) %}
+                {% if ('PHP' in job.title) %}
+                    <article class="job">
+                        <div class="job-row">
+                            <i class="far fa-star"></i>
+                            <a href="{{ job.link }}" class="relevant-job-title" target="_blank"><h2>{{ job.title }}</h2></a>
+                        </div>
+                        <div class="job-row">
+                            <i class="far fa-bookmark"></i><h3> {{ job.workplacename|default("No Company name") }}</h3>
+                        </div>
+                        <div class="job-row">
+                            <i class="fas fa-euro-sign"></i><p> {{ job.salary|default("No Salary Provided") }}</p>
+                        </div>
+                        <div class="job-row">
+                            <i class="far fa-building"></i><p> {{ job.city|default("No City Provided") }}</p>
+                        </div>
+                        <div class="job-row">
+                            <i class="fas fa-eye"></i><p> {{ job.getFetchDate|date('Y-m-d') }}</p>
+                        </div>
+                        <div class="job-row">
+                            <i class="far fa-check-square"></i><p> {{ job.getLastUpdate|date('Y-m-d') }}</p>
+                        </div>
+                        <div class="job-row">
+                            <p>{{ job.requirements|raw|nl2br }}</p>
+                        </div>
+                    </article>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="contains-php">
+<h1>Contains PHP keyword</h1>
+    <div class="contains-php-wrapper">
+        {% for job in jobs %}
+            {% if 'PHP' not in job.title %}
+                <div class="job">
+                    <div class="job-row">
+                        <i class="far fa-star"></i>
+                        <a href="{{ job.link }}" class="contains-job-title" target="_blank"><h2>{{ job.title }}</h2></a>
+                    </div>
+                    <div class="job-row">
+                        <i class="far fa-bookmark"></i><h3> {{ job.workplacename|default("No Company name") }}</h3>
+                    </div>
+                    <div class="job-row">
+                        <i class="fas fa-euro-sign"></i><p> {{ job.salary|default("No Salary Provided") }}</p>
+                    </div>
+                    <div class="job-row">
+                        <i class="far fa-building"></i><p> {{ job.city|default("No City Provided") }}</p>
+                    </div>
+                    <div class="job-row">
+                        <i class="fas fa-eye"></i><p> {{ job.getFetchDate|date('Y-m-d') }}</p>
+                    </div>
+                    <div class="job-row">
+                        <i class="far fa-check-square"></i> <p>{{ job.getLastUpdate|date('Y-m-d') }}</p>
+                    </div>
+                    <div class="job-row">
+                        <p>{{ job.requirements|raw|nl2br }}</p>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>

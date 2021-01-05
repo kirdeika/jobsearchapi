@@ -128,7 +128,7 @@ class JobController extends AbstractController
      * @Route("/fetchNew3")
      */
     public function fetchNew3(EntityManagerInterface $entityManager) {
-        $html = HtmlDomParser::file_get_html('https://www.cvmarket.lt/joboffers.php?_track=index_click_job_search&op=search&search_location=landingpage&ga_track=homepage&search%5Bkeyword%5D=PHP&mobile_search%5Bkeyword%5D=&tmp_city=&tmp_cat=&tmp_city=&tmp_category=&search%5Bkeyword%5D=PHP&search%5Bexpires_days%5D=&search%5Bjob_lang%5D=&search%5Bsalary%5D=&search%5Bjob_salary%5D=3');
+        $html = HtmlDomParser::file_get_html('https://www.cvmarket.lt/joboffers.php?_track=index_click_job_search&op=search&search_location=landingpage&ga_track=homepage&dummy_locations=134&search%5Bkeyword%5D=PHP&mobile_search%5Bkeyword%5D=PHP&tmp_city=&search%5Blocations%5D%5B%5D=134&tmp_cat=&tmp_city=&dummy_search%5Blocations%5D%5B%5D=134&tmp_category=&search%5Bkeyword%5D=PHP&search%5Bexpires_days%5D=&search%5Bjob_lang%5D=&search%5Bsalary%5D=&search%5Bjob_salary%5D=3');
         foreach ($html->find('tr.f_job_row2') as $e) {
             if(!$entityManager->getRepository(Job::class)->findBy([
                 'title'=>$e->findOne('a.f_job_title')->innertext,

@@ -132,7 +132,7 @@ class JobController extends AbstractController
         foreach ($html->find('tr.f_job_row2') as $e) {
             if(!$entityManager->getRepository(Job::class)->findBy([
                 'title'=>$e->findOne('a.f_job_title')->innertext,
-                'link'=>$e->findOne('a.f_job_title')->href
+                'link'=>'https://www.cvmarket.lt/' . $e->findOne('a.f_job_title')->href
             ])) {
                 $job = new Job;
                 $job->setTitle($e->findOne('a.f_job_title')->innertext);
@@ -148,7 +148,7 @@ class JobController extends AbstractController
             } else {
                 $existingJob = $entityManager->getRepository(Job::class)->findOneBy([
                     'title'=>$e->findOne('a.f_job_title')->innertext,
-                    'link'=>$e->findOne('a.f_job_title')->href
+                    'link'=>'https://www.cvmarket.lt/' . $e->findOne('a.f_job_title')->href
                 ]);
                 $existingJob->setLastUpdate(new \DateTime('now'));
                 $existingJob->setWorkplaceName($e->findOne('span.f_job_company')->innertext);

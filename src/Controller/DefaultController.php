@@ -16,7 +16,8 @@ class DefaultController extends AbstractController
     public function show(EntityManagerInterface $entityManager) {
         $jobs = $entityManager->getRepository(Job::class)->findBy(
             array(),
-            array('fetch_date' => 'DESC', 'last_update' => 'DESC')
+            array('fetch_date' => 'DESC', 'last_update' => 'DESC'),
+            25
         );
 
         if(!$jobs) {
